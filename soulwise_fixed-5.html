@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulWise - Personal Path to Inner Clarity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            color: #666;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row-three {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        textarea, select, input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus, select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: scale(1.02);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            transform: scale(1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-loading {
+            color: transparent;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .analysis-section {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .analysis-header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .analysis-header h3 {
+            color: #4a5568;
+            font-size: 1.4rem;
+        }
+
+        .analysis-content {
+            line-height: 1.8;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .analysis-content p {
+            margin-bottom: 18px;
+        }
+
+        .analysis-content strong {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f2ff 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .error-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #c53030;
+        }
+
+        .crystal-section {
+            margin-top: 20px;
+        }
+
+        .crystal-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-left: 4px solid #9333ea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .crystal-recommendation {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid #22c55e;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .crystal-recommendation h4 {
+            color: #15803d;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .crystal-usage {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .crystal-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .crystal-btn {
+            background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .crystal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .form-section, .analysis-section {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row-three {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .form-section, .analysis-section {
+                padding: 20px;
+            }
+            
+            .crystal-btn {
+                width: 100%;
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .form-section, .analysis-section {
+                padding: 15px;
+            }
+            
+            textarea, select, input {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .btn, .crystal-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 SoulWise</h1>
+            <p>Personal Spiritual Analysis & Ancient Wisdom</p>
+        </div>
+
+        <div class="form-section">
+            <h2 style="margin-bottom: 25px; color: #4a5568;">Tell Me About Your Inner World</h2>
+            
+            <div class="form-group">
+                <label for="problem">Share what's troubling your soul (be as detailed as possible):</label>
+                <textarea id="problem" placeholder="Pour your heart out... Describe your specific situation, feelings, patterns you've noticed, relationships, work challenges, recurring thoughts, dreams, family dynamics, or anything weighing on your soul. The more specific details you share, the more personalized and insightful your analysis will be. Include contexts, examples, and personal history that feels relevant."></textarea>
+            </div>
+
+            <div class="form-row-three">
+                <div class="form-group">
+                    <label for="name">What should I call you?</label>
+                    <input type="text" id="name" placeholder="Your preferred name">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Your birth date:</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="belief">Your spiritual/religious path:</label>
+                    <select id="belief">
+                        <option value="">Choose your spiritual home...</option>
+                        <option value="christianity">Christianity</option>
+                        <option value="islam">Islam</option>
+                        <option value="judaism">Judaism</option>
+                        <option value="buddhism">Buddhism</option>
+                        <option value="hinduism">Hinduism</option>
+                        <option value="taoism">Taoism</option>
+                        <option value="secular">Secular/Non-religious</option>
+                        <option value="spiritual">Spiritual but not religious</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn" onclick="generateAnalysis()" id="analyzeBtn">
+                🔮 Generate My Personal Analysis
+            </button>
+        </div>
+
+        <div class="analysis-section" id="analysisSection">
+            <div class="analysis-header">
+                <h3>🧠 Your Personal Psychological Portrait</h3>
+            </div>
+            <div class="analysis-content" id="psychAnalysis"></div>
+
+            <div class="analysis-header" style="margin-top: 30px;">
+                <h3>🙏 Your Spiritual Roadmap</h3>
+            </div>
+            <div class="analysis-content" id="spiritualAnalysis"></div>
+
+            <div class="crystal-button-container">
+                <button class="crystal-btn" onclick="showCrystalAnalysis()" id="crystalBtn">
+                    💎 Unlock Crystal Wisdom & Healing Recommendations
+                </button>
+            </div>
+
+            <div class="crystal-section" id="crystalSection" style="display: none;">
+                <div class="analysis-header" style="margin-top: 30px;">
+                    <h3>💎 Your Crystal Healing Analysis</h3>
+                </div>
+                <div class="analysis-content" id="crystalAnalysis"></div>
+
+                <div class="analysis-header" style="margin-top: 30px;">
+                    <h3>🔮 Your Personalized Crystal Bracelet Recommendations</h3>
+                </div>
+                <div class="analysis-content" id="crystalRecommendations"></div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; margin-top: 20px; font-size: 0.9rem; color: #666; text-align: center;">
+            <strong>Sacred Wisdom Disclaimer:</strong> This platform combines ancient wisdom traditions with personalized spiritual analysis for your journey. 
+            Your analysis is uniquely generated based on your specific situation. This guidance complements but doesn't replace professional psychological or medical care when needed.
+        </div>
+    </div>
+
+    <script>
+        // Track analysis variations to ensure diversity
+        let analysisHistory = JSON.parse(localStorage.getItem('soulwise_history') || '{}');
+        let userData = {};
+
+        // Main analysis function
+        async function generateAnalysis() {
+            try {
+                // Validate inputs
+                const problem = document.getElementById('problem').value.trim();
+                const belief = document.getElementById('belief').value;
+                const name = document.getElementById('name').value.trim() || 'Dear Soul';
+                const birthdate = document.getElementById('birthdate').value;
+                
+                if (!problem) {
+                    alert('Please share what\'s troubling you in detail for a personalized analysis.');
+                    return;
+                }
+                
+                if (problem.length < 50) {
+                    alert('Please provide more details (at least 50 characters) for a meaningful analysis.');
+                    return;
+                }
+                
+                if (!belief) {
+                    alert('Please share your spiritual background for personalized guidance.');
+                    return;
+                }
+
+                if (!birthdate) {
+                    alert('Please share your birth date for cosmic insights.');
+                    return;
+                }
+
+                // Clear previous analysis and reset crystal section
+                document.getElementById('psychAnalysis').innerHTML = '';
+                document.getElementById('spiritualAnalysis').innerHTML = '';
+                document.getElementById('crystalAnalysis').innerHTML = '';
+                document.getElementById('crystalRecommendations').innerHTML = '';
+                document.getElementById('crystalSection').style.display = 'none';
+                document.getElementById('crystalBtn').style.display = 'block';
+
+                userData = { problem, belief, name, birthdate };
+
+                // Show loading state
+                const analyzeBtn = document.getElementById('analyzeBtn');
+                analyzeBtn.disabled = true;
+                analyzeBtn.classList.add('btn-loading');
+                analyzeBtn.textContent = 'Generating your analysis...';
+
+                // Calculate zodiac and life path
+                const zodiacSign = getZodiacSign(birthdate);
+                const lifePathNumber = calculateLifePath(new Date(birthdate));
+
+                // Simulate processing time for better UX
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Generate varied analysis using current inputs (not cached userData)
+                const psychAnalysis = generatePsychAnalysis(problem, name, birthdate, zodiacSign, lifePathNumber);
+                const spiritualAnalysis = generateSpiritualGuidance(belief, problem, name, birthdate, zodiacSign);
+                
+                // Display results
+                document.getElementById('psychAnalysis').innerHTML = psychAnalysis;
+                document.getElementById('spiritualAnalysis').innerHTML = spiritualAnalysis;
+                
+                // Show analysis section
+                const analysisSection = document.getElementById('analysisSection');
+                analysisSection.style.display = 'block';
+                analysisSection.classList.add('fade-in');
+                
+                // Scroll to results
+                analysisSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Reset button
+                analyzeBtn.disabled = false;
+                analyzeBtn.classList.remove('btn-loading');
+                analyzeBtn.textContent = '🔮 Generate My Personal Analysis';
+
+            } catch (error) {
+                console.error('Error in generateAnalysis:', error);
+                showError('Analysis failed. Please refresh and try again.');
+                
+                // Reset button
+                const analyzeBtn = document.getElementById('analyzeBtn');
+                analyzeBtn.disabled = false;
+                analyzeBtn.classList.remove('btn-loading');
+                analyzeBtn.textContent = '🔮 Generate My Personal Analysis';
+            }
+        }
+
+        // Generate psychological analysis with variations
+        function generatePsychAnalysis(problem, name, birthdate, zodiacSign, lifePathNumber) {
+            const keywords = problem.toLowerCase();
+            const specificDetails = extractSpecificDetails(problem);
+            const category = categorizeIssue(keywords);
+            const variation = getNextVariation(category, 'psych', problem);
+            
+            let analysis = '';
+            
+            if (category === 'anxiety') {
+                analysis = getAnxietyAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else if (category === 'relationship') {
+                analysis = getRelationshipAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else if (category === 'work') {
+                analysis = getWorkAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else if (category === 'family') {
+                analysis = getFamilyAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else if (category === 'money') {
+                analysis = getMoneyAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else if (category === 'health') {
+                analysis = getHealthAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            } else {
+                analysis = getGeneralAnalysis(variation, name, specificDetails, zodiacSign, lifePathNumber);
+            }
+            
+            return analysis;
+        }
+
+        // Generate spiritual guidance with variations
+        function generateSpiritualGuidance(belief, problem, name, birthdate, zodiacSign) {
+            const category = categorizeIssue(problem.toLowerCase());
+            const variation = getNextVariation(category, 'spiritual', problem);
+            
+            return getSpiritualAnalysis(belief, variation, name, extractSpecificDetails(problem), zodiacSign, category);
+        }
+
+        // Categorize user's issue
+        function categorizeIssue(text) {
+            if (text.includes('anxio') || text.includes('worry') || text.includes('stress') || text.includes('panic') || text.includes('fear') || text.includes('nervous')) {
+                return 'anxiety';
+            } else if (text.includes('relationship') || text.includes('love') || text.includes('partner') || text.includes('dating') || text.includes('marriage')) {
+                return 'relationship';
+            } else if (text.includes('work') || text.includes('job') || text.includes('career') || text.includes('office') || text.includes('boss')) {
+                return 'work';
+            } else if (text.includes('family') || text.includes('mother') || text.includes('father') || text.includes('parent') || text.includes('sibling')) {
+                return 'family';
+            } else if (text.includes('money') || text.includes('financial') || text.includes('debt') || text.includes('income') || text.includes('budget')) {
+                return 'money';
+            } else if (text.includes('health') || text.includes('sick') || text.includes('pain') || text.includes('medical') || text.includes('body')) {
+                return 'health';
+            } else {
+                return 'general';
+            }
+        }
+
+        // Get next variation to ensure diversity
+        function getNextVariation(category, type, problemText = '') {
+            // Create a simple hash from the problem text to ensure different problems get different variations
+            const problemHash = problemText ? problemText.substring(0, 50).replace(/\s/g, '').length % 3 : 0;
+            const key = `${category}_${type}_${problemHash}`;
+            
+            if (!analysisHistory[key]) {
+                analysisHistory[key] = [];
+            }
+            
+            const variations = [0, 1, 2]; // Three variations per category
+            const used = analysisHistory[key];
+            
+            // If all variations used, reset
+            if (used.length >= variations.length) {
+                analysisHistory[key] = [];
+                used.length = 0;
+            }
+            
+            // Find unused variation
+            const available = variations.filter(v => !used.includes(v));
+            const chosen = available.length > 0 ? available[Math.floor(Math.random() * available.length)] : Math.floor(Math.random() * 3);
+            
+            // Record usage
+            used.push(chosen);
+            localStorage.setItem('soulwise_history', JSON.stringify(analysisHistory));
+            
+            return chosen;
+        }
+
+        // Show crystal analysis section
+        function showCrystalAnalysis() {
+            // Get current form inputs instead of using cached userData
+            const currentProblem = document.getElementById('problem').value.trim();
+            const currentName = document.getElementById('name').value.trim() || 'Dear Soul';
+            const currentBirthdate = document.getElementById('birthdate').value;
+            
+            const crystalBtn = document.getElementById('crystalBtn');
+            crystalBtn.style.display = 'none';
+            
+            const crystalSection = document.getElementById('crystalSection');
+            crystalSection.style.display = 'block';
+            crystalSection.classList.add('fade-in');
+            
+            // Generate crystal analysis using current inputs
+            const category = categorizeIssue(currentProblem.toLowerCase());
+            const zodiacSign = getZodiacSign(currentBirthdate);
+            const specificDetails = extractSpecificDetails(currentProblem);
+            
+            const crystalAnalysis = generateCrystalAnalysis(category, currentName, specificDetails, zodiacSign);
+            const crystalRecommendations = generateCrystalRecommendations(category, currentName, specificDetails, zodiacSign);
+            
+            document.getElementById('crystalAnalysis').innerHTML = crystalAnalysis;
+            document.getElementById('crystalRecommendations').innerHTML = crystalRecommendations;
+            
+            crystalSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generate crystal analysis based on problem category
+        function generateCrystalAnalysis(category, name, details, zodiacSign) {
+            const crystalWisdom = {
+                'anxiety': {
+                    energy: "anxiety and mental overwhelm",
+                    crystals: "Amethyst, Lepidolite, and Blue Lace Agate",
+                    chakras: "Crown and Throat chakras",
+                    message: "Your nervous system is crying out for the gentle, calming vibrations that only Earth's crystalline allies can provide."
+                },
+                'relationship': {
+                    energy: "heart wounds and relationship patterns",
+                    crystals: "Rose Quartz, Green Aventurine, and Rhodonite",
+                    chakras: "Heart chakra",
+                    message: "Your heart is ready to heal and open to authentic love with the support of heart-healing crystal energies."
+                },
+                'work': {
+                    energy: "professional frustration and purpose misalignment",
+                    crystals: "Citrine, Pyrite, and Carnelian",
+                    chakras: "Solar Plexus and Sacral chakras",
+                    message: "Your professional path needs the energizing and manifesting power of abundance-attracting crystals."
+                },
+                'family': {
+                    energy: "family dynamics and generational patterns",
+                    crystals: "Moonstone, Amazonite, and Prehnite",
+                    chakras: "Heart and Throat chakras",
+                    message: "Your family healing journey requires the wisdom and peaceful communication energy of ancestral healing stones."
+                },
+                'money': {
+                    energy: "financial blocks and abundance resistance",
+                    crystals: "Green Aventurine, Pyrite, and Tiger's Eye",
+                    chakras: "Root and Solar Plexus chakras",
+                    message: "Your abundance blocks need the grounding and prosperity-attracting vibrations of Earth's wealth crystals."
+                },
+                'health': {
+                    energy: "physical and energetic imbalances",
+                    crystals: "Clear Quartz, Bloodstone, and Fluorite",
+                    chakras: "all chakras for complete healing",
+                    message: "Your body-mind system needs the purifying and balancing energies of master healing crystals."
+                },
+                'general': {
+                    energy: "spiritual awakening and personal transformation",
+                    crystals: "Labradorite, Amethyst, and Selenite",
+                    chakras: "Third Eye and Crown chakras",
+                    message: "Your soul evolution requires the high-vibrational guidance of spiritual awakening crystals."
+                }
+            };
+
+            const wisdom = crystalWisdom[category] || crystalWisdom['general'];
+
+            return `
+                <div class="crystal-box">
+                    <strong>${name}, the crystal realm sees your struggle with ${details.situation} and offers ancient healing wisdom.</strong>
+                    <p>Your ${zodiacSign} energy signature resonates specifically with crystals that address ${wisdom.energy}. ${wisdom.message}</p>
+                </div>
+
+                <p><strong>🔮 Your Crystal Energy Reading:</strong> The crystalline consciousness reveals that your current challenge with ${details.focus} is creating energetic blockages in your ${wisdom.chakras}. These energy centers are calling for the specific vibrational healing that ${wisdom.crystals} can provide.</p>
+
+                <p><strong>💎 Your Crystal Healing Journey:</strong> As a ${zodiacSign}, your energy field naturally attunes to certain crystal frequencies. The situation with ${details.trigger} has created an energetic pattern that crystal healing can transform. Your healing stones will work as energetic allies, constantly broadcasting healing frequencies into your auric field.</p>
+
+                <div class="crystal-box">
+                    <strong>Crystal Wisdom for Your Path:</strong>
+                    <p>Crystals are not just beautiful stones - they are living libraries of Earth's wisdom, programmed over millions of years to assist human consciousness. Your specific challenge with ${details.situation} has attracted you to crystal healing because your soul knows these ancient allies hold the exact vibrational keys you need for transformation.</p>
+                </div>
+
+                <div class="crystal-usage">
+                    <strong>🌟 How Crystals Will Transform Your Energy:</strong>
+                    <p><strong>Immediate Relief:</strong> Crystal energy begins working within 24-48 hours of consistent contact with your energy field.</p>
+                    <p><strong>Weekly Shifts:</strong> After 1-2 weeks, you'll notice significant changes in how you respond to ${details.trigger}.</p>
+                    <p><strong>Deep Transformation:</strong> After 30-90 days, the crystal frequencies will have helped reprogram your energy patterns around ${details.focus}.</p>
+                </div>
+            `;
+        }
+
+        // Generate specific crystal bracelet recommendations
+        function generateCrystalRecommendations(category, name, details, zodiacSign) {
+            const recommendations = {
+                'anxiety': [
+                    {
+                        name: "Calming Mind Bracelet",
+                        crystals: "8mm Amethyst + 6mm Lepidolite + 8mm Blue Lace Agate",
+                        purpose: "Instant nervous system relief and mental clarity",
+                        usage: "Wear on your dominant hand during stressful situations. Hold the Amethyst beads during anxiety attacks.",
+                        timing: `Most powerful during Mercury retrograde and full moons for your ${zodiacSign} energy.`
+                    },
+                    {
+                        name: "Peaceful Sleep Bracelet", 
+                        crystals: "8mm Moonstone + 6mm Lepidolite + 8mm Prehnite",
+                        purpose: "Deep sleep and dream protection from anxious thoughts",
+                        usage: "Wear on non-dominant hand 2 hours before bed. Place under pillow while sleeping.",
+                        timing: "Program during new moon for 28-day anxiety relief cycles."
+                    },
+                    {
+                        name: "Grounding Protection Bracelet",
+                        crystals: "10mm Black Tourmaline + 8mm Smoky Quartz + 6mm Hematite",
+                        purpose: "Shields against absorbing others' anxious energy",
+                        usage: "Wear on dominant hand in crowded places. Touch when feeling overwhelmed.",
+                        timing: "Cleanse weekly with sage smoke for maximum protective power."
+                    }
+                ],
+                'relationship': [
+                    {
+                        name: "Heart Healing Bracelet",
+                        crystals: "8mm Rose Quartz + 6mm Green Aventurine + 8mm Rhodonite",
+                        purpose: "Heals past relationship wounds and opens heart to new love",
+                        usage: "Wear over heart chakra during meditation. Sleep with it under pillow for 21 nights.",
+                        timing: "Most powerful when programmed during Venus-ruled Friday evenings."
+                    },
+                    {
+                        name: "Self-Love Activation Bracelet",
+                        crystals: "8mm Morganite + 6mm Kunzite + 8mm Pink Mangano Calcite",
+                        purpose: "Develops unconditional self-love and healthy boundaries",
+                        usage: "Wear on non-dominant hand. Hold during self-love affirmations each morning.",
+                        timing: `Program during self-care Sunday rituals for maximum ${zodiacSign} activation.`
+                    },
+                    {
+                        name: "Communication Harmony Bracelet",
+                        crystals: "8mm Blue Lace Agate + 6mm Amazonite + 8mm Sodalite",
+                        purpose: "Promotes honest, loving communication in relationships", 
+                        usage: "Wear during difficult conversations. Touch throat chakra while wearing.",
+                        timing: "Cleanse after arguments and reprogram with loving intentions."
+                    }
+                ],
+                'work': [
+                    {
+                        name: "Success Manifestation Bracelet",
+                        crystals: "8mm Citrine + 6mm Pyrite + 8mm Tiger's Eye",
+                        purpose: "Attracts professional opportunities and financial abundance",
+                        usage: "Wear on dominant hand during work hours. Keep in workspace overnight.",
+                        timing: "Program during Thursday (Jupiter's day) for career expansion energy."
+                    },
+                    {
+                        name: "Confidence & Leadership Bracelet",
+                        crystals: "8mm Carnelian + 6mm Sunstone + 8mm Red Jasper",
+                        purpose: "Builds professional confidence and natural leadership abilities",
+                        usage: "Wear during presentations and important meetings. Energize in sunlight.",
+                        timing: `Most powerful for ${zodiacSign} energy when charged during solar eclipses.`
+                    },
+                    {
+                        name: "Creative Inspiration Bracelet",
+                        crystals: "8mm Labradorite + 6mm Ametrine + 8mm Fluorite",
+                        purpose: "Enhances creativity, innovation, and problem-solving skills",
+                        usage: "Wear during brainstorming sessions. Meditate with it for 10 minutes before creative work.",
+                        timing: "Activate during new moon phases for fresh creative cycles."
+                    }
+                ],
+                'family': [
+                    {
+                        name: "Family Harmony Bracelet",
+                        crystals: "8mm Moonstone + 6mm Prehnite + 8mm Chrysocolla",
+                        purpose: "Promotes understanding, forgiveness, and peaceful family dynamics",
+                        usage: "Wear during family gatherings. Hold during family-related meditation.",
+                        timing: "Cleanse and reprogram during full moon family healing rituals."
+                    },
+                    {
+                        name: "Generational Healing Bracelet",
+                        crystals: "8mm Ancestralite + 6mm Spirit Quartz + 8mm Petrified Wood",
+                        purpose: "Heals inherited family patterns and ancestral trauma",
+                        usage: "Wear during family therapy or personal healing work. Sleep with it for 40 nights.",
+                        timing: "Most powerful when programmed during ancestor honoring ceremonies."
+                    },
+                    {
+                        name: "Boundary Setting Bracelet",
+                        crystals: "8mm Black Tourmaline + 6mm Amazonite + 8mm Labradorite",
+                        purpose: "Maintains loving boundaries while preserving family connections",
+                        usage: "Wear on non-dominant hand during challenging family interactions.",
+                        timing: `Recharge monthly during ${zodiacSign} season for personal empowerment.`
+                    }
+                ],
+                'money': [
+                    {
+                        name: "Abundance Attraction Bracelet",
+                        crystals: "8mm Green Aventurine + 6mm Pyrite + 8mm Citrine",
+                        purpose: "Attracts wealth, prosperity, and financial opportunities",
+                        usage: "Wear on receiving hand (non-dominant). Keep in wallet or purse overnight.",
+                        timing: "Program during Thursday's Jupiter energy for maximum abundance flow."
+                    },
+                    {
+                        name: "Money Mindset Bracelet",
+                        crystals: "8mm Malachite + 6mm Tiger's Eye + 8mm Goldstone",
+                        purpose: "Transforms limiting beliefs about money and worthiness",
+                        usage: "Wear during financial planning sessions. Meditate with it on solar plexus.",
+                        timing: "Cleanse during each pay period and reprogram with abundance affirmations."
+                    },
+                    {
+                        name: "Business Success Bracelet",
+                        crystals: "8mm Peridot + 6mm Garnet + 8mm Clear Quartz",
+                        purpose: "Enhances business intuition and successful decision-making",
+                        usage: "Wear during business meetings and financial decisions. Charge in moonlight monthly.",
+                        timing: `Most effective for ${zodiacSign} when activated during Mercury direct periods.`
+                    }
+                ],
+                'health': [
+                    {
+                        name: "Vitality Restoration Bracelet",
+                        crystals: "8mm Bloodstone + 6mm Red Jasper + 8mm Carnelian",
+                        purpose: "Boosts physical energy, strength, and overall vitality",
+                        usage: "Wear on pulse points. Remove during medical procedures, replace immediately after.",
+                        timing: "Charge in morning sunlight for optimal energy activation."
+                    },
+                    {
+                        name: "Healing Support Bracelet",
+                        crystals: "8mm Clear Quartz + 6mm Amethyst + 8mm Green Aventurine",
+                        purpose: "Amplifies body's natural healing processes and recovery",
+                        usage: "Wear continuously during illness. Cleanse weekly with running water.",
+                        timing: "Program during waning moon for releasing illness energy."
+                    },
+                    {
+                        name: "Emotional Healing Bracelet",
+                        crystals: "8mm Rose Quartz + 6mm Lepidolite + 8mm Amazonite",
+                        purpose: "Heals emotional stress that manifests as physical symptoms",
+                        usage: "Wear over heart during emotional healing work. Sleep with it during recovery.",
+                        timing: `Most powerful for ${zodiacSign} sensitivity during Cancer season.`
+                    }
+                ],
+                'general': [
+                    {
+                        name: "Spiritual Awakening Bracelet",
+                        crystals: "8mm Labradorite + 6mm Amethyst + 8mm Selenite",
+                        purpose: "Accelerates spiritual growth and intuitive development",
+                        usage: "Wear during meditation and spiritual practices. Keep by bedside for dream enhancement.",
+                        timing: "Program during spiritual holidays and planetary alignments."
+                    },
+                    {
+                        name: "Life Transformation Bracelet",
+                        crystals: "8mm Moldavite + 6mm Phenakite + 8mm Herkimer Diamond",
+                        purpose: "Catalyzes rapid personal transformation and consciousness expansion",
+                        usage: "Wear only during dedicated transformation work. Start with 2-hour sessions.",
+                        timing: `Use during eclipses and major astrological transits for ${zodiacSign}.`
+                    },
+                    {
+                        name: "Daily Protection & Guidance Bracelet",
+                        crystals: "8mm Clear Quartz + 6mm Black Tourmaline + 8mm Fluorite",
+                        purpose: "Provides daily spiritual protection and clear guidance",
+                        usage: "Wear daily on dominant hand. Cleanse weekly and reprogram with intentions.",
+                        timing: "Reset monthly during new moon with fresh intentions."
+                    }
+                ]
+            };
+
+            const recs = recommendations[category] || recommendations['general'];
+            
+            let html = `<p><strong>${name}, based on your ${zodiacSign} energy and your specific challenge with ${details.situation}, here are your personalized crystal bracelet prescriptions:</strong></p>`;
+
+            recs.forEach((rec, index) => {
+                html += `
+                    <div class="crystal-recommendation">
+                        <h4>💎 ${rec.name}</h4>
+                        <p><strong>Crystal Combination:</strong> ${rec.crystals}</p>
+                        <p><strong>Healing Purpose:</strong> ${rec.purpose}</p>
+                        <p><strong>How to Use:</strong> ${rec.usage}</p>
+                        <p><strong>Timing & Care:</strong> ${rec.timing}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="crystal-usage">
+                    <strong>🔮 Complete Crystal Bracelet Protocol for ${name}:</strong>
+                    <p><strong>Week 1-2:</strong> Start with just one bracelet to attune your energy. Choose the one that feels most urgent for ${details.situation}.</p>
+                    <p><strong>Week 3-4:</strong> Add a second bracelet on the opposite wrist. Notice how your response to ${details.trigger} begins shifting.</p>
+                    <p><strong>Month 2+:</strong> You can wear all three bracelets in rotation based on daily needs and lunar cycles.</p>
+                    <p><strong>Crystal Care:</strong> Cleanse weekly with sage smoke, moonlight, or running water. Reprogram monthly with specific intentions for ${details.focus}.</p>
+                    <p><strong>Your ${zodiacSign} Crystal Schedule:</strong> Your zodiac sign responds best to crystal energy during favorable planetary alignments. Trust your intuition about when to wear each bracelet.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌟 Your Crystal Transformation Promise:</strong>
+                    <p>These aren't just pretty accessories - they're precision healing tools calibrated to your ${zodiacSign} energy signature. Within 30 days of consistent use, you'll notice profound shifts in how you experience ${details.situation}. The Earth's crystalline wisdom is now working 24/7 to support your highest healing and transformation.</p>
+                </div>
+            `;
+
+            return html;
+        }
+
+        // Extract specific details from user's story
+        function extractSpecificDetails(problem) {
+            const text = problem.toLowerCase();
+            let quote = problem.substring(0, 80) + (problem.length > 80 ? "..." : "");
+            let situation = "your current challenge";
+            let trigger = "difficult situations";
+            let focus = "your main concern";
+            let person = "others";
+            let goal = "positive change";
+            
+            // Extract more specific context
+            if (text.includes('work') || text.includes('job')) {
+                situation = "your work situation";
+                focus = "your career path";
+                trigger = "work-related stress";
+                goal = "professional fulfillment";
+            }
+            
+            if (text.includes('relationship') || text.includes('partner') || text.includes('husband') || text.includes('wife')) {
+                situation = "your relationship";
+                focus = "your connection with your partner";
+                trigger = "relationship conflicts";
+                person = "your partner";
+                goal = "deeper intimacy";
+            }
+            
+            if (text.includes('family') || text.includes('mother') || text.includes('father') || text.includes('parent')) {
+                situation = "your family dynamics";
+                focus = "your family relationships";
+                trigger = "family tensions";
+                person = "your family members";
+                goal = "family harmony";
+            }
+            
+            if (text.includes('money') || text.includes('financial') || text.includes('debt')) {
+                situation = "your financial circumstances";
+                focus = "your financial security";
+                trigger = "money worries";
+                goal = "financial stability";
+            }
+            
+            return { quote, situation, trigger, focus, person, goal };
+        }
+
+        // Anxiety analysis variations
+        function getAnxietyAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Nervous system focus
+                `<div class="insight-box">
+                    <strong>${name}, I can sense the overstimulation in your nervous system through your words: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} sensitivity is both a gift and a challenge. What you're experiencing with ${details.situation} is your nervous system trying to protect you, but it's stuck in overdrive. Your body has learned to interpret uncertainty as danger.</p>
+                </div>
+
+                <p><strong>🧠 Your Anxiety Blueprint:</strong> Your Life Path ${lifePathNumber} soul is meant to ${getLifePathPurpose(lifePathNumber)}, but anxiety is creating static in your system. The specific triggers around ${details.trigger} are actually old survival programs running automatically.</p>
+
+                <p><strong>🔄 The Nervous System Story:</strong> Your ${zodiacSign} intuitive nature picks up on subtle energies that others miss. But instead of trusting this as information, your mind turns it into worry about ${details.focus}. This creates a feedback loop of tension.</p>
+
+                <div class="solution-box">
+                    <strong>Your Nervous System Reset Plan:</strong>
+                    <p><strong>Immediate Relief:</strong> When ${details.trigger} happens, do the physiological sigh - double inhale through nose, long exhale through mouth. This directly calms your nervous system.</p>
+                    <p><strong>Daily Rewiring:</strong> 10 minutes of cold exposure (cold shower/ice on face) to build resilience to stress responses.</p>
+                    <p><strong>Weekly Practice:</strong> Progressive muscle relaxation focusing on areas where you hold tension during ${details.situation}.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Nervous System Evolution:</strong>
+                    <p>Your ${zodiacSign} sensitivity, once regulated, becomes your superpower for ${getZodiacGifts(zodiacSign)}. You're not broken - you're just highly attuned and need different tools.</p>
+                </div>`,
+
+                // Variation 1: Thought pattern focus
+                `<div class="insight-box">
+                    <strong>${name}, your mind's protective patterns are so clear in your description: "${details.quote}"</strong>
+                    <p>As a ${zodiacSign}, you have a rich inner world that can sometimes become a maze of worry. Your anxiety about ${details.situation} is actually your mind trying to solve problems before they happen - an exhausting but well-meaning strategy.</p>
+                </div>
+
+                <p><strong>🧠 Your Mental Pattern:</strong> Life Path ${lifePathNumber} minds are designed to ${getLifePathPurpose(lifePathNumber)}, but anxiety hijacks this purpose with endless "what if" scenarios about ${details.focus}. Your thoughts are trying to create safety through control.</p>
+
+                <p><strong>🔄 The Worry Cycle:</strong> You notice something uncertain about ${details.trigger}, your ${zodiacSign} mind immediately starts planning for every possible outcome, which creates more uncertainty, which triggers more planning. It's like being trapped in a mental hamster wheel.</p>
+
+                <div class="solution-box">
+                    <strong>Your Thought Liberation Strategy:</strong>
+                    <p><strong>Thought Defusion:</strong> When worried thoughts about ${details.situation} arise, say "I'm having the thought that..." before the worry. This creates distance.</p>
+                    <p><strong>The 5-4-3-2-1 Technique:</strong> Name 5 things you see, 4 things you feel, 3 things you hear, 2 things you smell, 1 thing you taste. This grounds you in reality vs. mental projections.</p>
+                    <p><strong>Worry Window:</strong> Set aside 15 minutes daily to deliberately worry about ${details.focus}. Outside this time, redirect worries to the window.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Mind's True Power:</strong>
+                    <p>Your ${zodiacSign} mental gifts are meant for ${getZodiacGifts(zodiacSign)}, not endless worry loops. Once you master your thoughts, your intuitive insights become profound guidance.</p>
+                </div>`,
+
+                // Variation 2: Energy/somatic focus
+                `<div class="insight-box">
+                    <strong>${name}, I can feel the trapped energy in your system through your words: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} energy body is highly sensitive and absorbs stress from ${details.situation} like a sponge. What you're experiencing isn't just mental - it's energetic overwhelm that needs physical release.</p>
+                </div>
+
+                <p><strong>🧠 Your Energy System:</strong> Your Life Path ${lifePathNumber} vibration is naturally high, designed for ${getLifePathPurpose(lifePathNumber)}, but anxiety creates energetic blockages. The stress around ${details.trigger} gets stuck in your body instead of flowing through.</p>
+
+                <p><strong>🔄 The Energy Story:</strong> Your ${zodiacSign} nature means you feel everything deeply. When ${details.focus} creates uncertainty, that emotional energy has nowhere to go, so it circles in your system as anxiety, tension, and restlessness.</p>
+
+                <div class="solution-box">
+                    <strong>Your Energy Liberation Protocol:</strong>
+                    <p><strong>Movement Medicine:</strong> When anxiety about ${details.situation} builds, do 2 minutes of shaking - literally shake your whole body like an animal. This discharges stuck energy.</p>
+                    <p><strong>Breathwork:</strong> Box breathing (4 counts in, hold 4, out 4, hold 4) while visualizing energy flowing through and out of your body.</p>
+                    <p><strong>Energy Hygiene:</strong> End each day by visualizing roots growing from your feet into the earth, grounding excess energy from ${details.trigger}.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Energy Mastery:</strong>
+                    <p>Your ${zodiacSign} sensitivity to energy, once balanced, becomes your gift for ${getZodiacGifts(zodiacSign)}. You're learning to be a conductor of energy, not a victim of it.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Relationship analysis variations  
+        function getRelationshipAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Attachment style focus
+                `<div class="insight-box">
+                    <strong>${name}, your relationship pattern speaks volumes in your words: "${details.quote}"</strong>
+                    <p>As a ${zodiacSign}, you love deeply but may have learned to love in ways that abandon yourself. The dynamic with ${details.person} around ${details.situation} is showing you where you give your power away for connection.</p>
+                </div>
+
+                <p><strong>🧠 Your Attachment Story:</strong> Your Life Path ${lifePathNumber} heart is learning ${getLifePathLoveLesson(lifePathNumber)}, but old patterns make you seek ${getZodiacLoveStyle(zodiacSign)} in ways that don't honor your worth. The trigger around ${details.trigger} activates your fear of abandonment or rejection.</p>
+
+                <p><strong>🔄 The Love Pattern:</strong> You give generously to ${details.person}, hoping for the deep connection your ${zodiacSign} heart craves, but when ${details.focus} creates distance, you either pursue harder or withdraw completely. Neither strategy creates the intimacy you truly want.</p>
+
+                <div class="solution-box">
+                    <strong>Your Secure Love Strategy:</strong>
+                    <p><strong>Self-Love Foundation:</strong> Before interacting with ${details.person}, ask "What would someone who deeply loves me want for me in this situation?"</p>
+                    <p><strong>Boundary Practice:</strong> Share your truth about ${details.situation} without explaining, justifying, or convincing. Your worth isn't up for debate.</p>
+                    <p><strong>Attachment Healing:</strong> Notice when you feel the urge to chase or withdraw. Pause and ask "What do I actually need right now?" then give it to yourself first.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Love Evolution:</strong>
+                    <p>Your ${zodiacSign} capacity for ${getZodiacLoveStyle(zodiacSign)} is rare and beautiful. Once you love yourself with that same depth, you'll attract someone who matches your emotional maturity.</p>
+                </div>`,
+
+                // Variation 1: Communication patterns focus
+                `<div class="insight-box">
+                    <strong>${name}, the communication dance you describe reveals so much: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} heart wants to be truly seen and understood, especially around ${details.situation}. But the way you and ${details.person} communicate may be creating more distance instead of the connection you crave.</p>
+                </div>
+
+                <p><strong>🧠 Your Communication Style:</strong> Life Path ${lifePathNumber} souls need ${getLifePathLoveLesson(lifePathNumber)}, but you may communicate your needs indirectly, hoping ${details.person} will just "get it." When they don't understand your ${zodiacSign} way of expressing love, frustration builds around ${details.focus}.</p>
+
+                <p><strong>🔄 The Miscommunication Loop:</strong> You express your concerns about ${details.trigger} in your natural ${zodiacSign} way, but ${details.person} hears something different. They respond defensively, you feel misunderstood, and both of you retreat further from intimacy.</p>
+
+                <div class="solution-box">
+                    <strong>Your Clear Communication Blueprint:</strong>
+                    <p><strong>The Formula:</strong> "When [${details.trigger}] happens, I feel [emotion] because I need [specific need]. Would you be willing to [specific request]?"</p>
+                    <p><strong>Mirror Practice:</strong> Before discussing ${details.situation}, reflect back what you heard them say before sharing your perspective.</p>
+                    <p><strong>Emotional Literacy:</strong> Name your feelings precisely instead of using "I feel like you..." which is actually a thought, not a feeling.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Communication Mastery:</strong>
+                    <p>Your ${zodiacSign} emotional intelligence, expressed clearly, creates the deep ${getZodiacLoveStyle(zodiacSign)} you desire. Clear communication is an act of love for both of you.</p>
+                </div>`,
+
+                // Variation 2: Self-worth in relationships focus
+                `<div class="insight-box">
+                    <strong>${name}, your relationship story illuminates your self-worth journey: "${details.quote}"</strong>
+                    <p>The way you navigate ${details.situation} with ${details.person} is a mirror for how you see yourself. Your ${zodiacSign} heart is asking you to love yourself as fiercely as you love others.</p>
+                </div>
+
+                <p><strong>🧠 Your Worth Recognition:</strong> Your Life Path ${lifePathNumber} soul came here to master ${getLifePathLoveLesson(lifePathNumber)}, but you may be seeking external validation for the love you need to give yourself. The pattern around ${details.focus} shows where you compromise your truth for acceptance.</p>
+
+                <p><strong>🔄 The Worth Exchange:</strong> You tolerate behavior around ${details.trigger} that doesn't align with your values because part of you believes this is what you deserve. Your ${zodiacSign} nature craves authentic connection, but fear keeps you accepting less.</p>
+
+                <div class="solution-box">
+                    <strong>Your Self-Worth Reclamation:</strong>
+                    <p><strong>Worth Affirmation:</strong> "I am worthy of ${getZodiacLoveStyle(zodiacSign)} exactly as I am. I don't need to earn love through perfect behavior."</p>
+                    <p><strong>Non-Negotiables:</strong> List 3 relationship standards around ${details.situation} that honor your ${zodiacSign} needs. These are not requests - they're requirements.</p>
+                    <p><strong>Worthiness Practice:</strong> Treat yourself how you want ${details.person} to treat you. Take yourself on dates, speak kindly to yourself, celebrate your wins.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Worth Revolution:</strong>
+                    <p>Your ${zodiacSign} gift of ${getZodiacGifts(zodiacSign)} becomes magnetic when you truly value yourself. The right person will be drawn to your authentic self-love.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Work analysis variations
+        function getWorkAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Purpose and calling focus
+                `<div class="insight-box">
+                    <strong>${name}, your work situation reflects a deeper calling: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} soul isn't just looking for a job - you're seeking meaningful work that aligns with your purpose. The challenges around ${details.situation} are actually redirecting you toward your true calling.</p>
+                </div>
+
+                <p><strong>🧠 Your Professional Purpose:</strong> Life Path ${lifePathNumber} souls are meant to ${getLifePathPurpose(lifePathNumber)}, but your current role may not allow this expression. The frustration with ${details.focus} is your soul saying "this isn't where I belong."</p>
+
+                <p><strong>🔄 The Misalignment Signal:</strong> Your ${zodiacSign} energy thrives when doing work that utilizes ${getZodiacGifts(zodiacSign)}, but when ${details.trigger} happens, it's because you're forcing yourself into a box that doesn't fit your authentic nature.</p>
+
+                <div class="solution-box">
+                    <strong>Your Purpose Alignment Strategy:</strong>
+                    <p><strong>Values Audit:</strong> List your top 5 values and rate how well your current role honors each one. This shows where misalignment exists.</p>
+                    <p><strong>Energy Mapping:</strong> Track your energy during different work tasks. What lights you up vs. drains you? This points toward your calling.</p>
+                    <p><strong>Small Experiments:</strong> Spend 1 hour weekly exploring work that incorporates your ${zodiacSign} gifts, even as a side project.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Professional Destiny:</strong>
+                    <p>Your ${zodiacSign} talents for ${getZodiacGifts(zodiacSign)} are meant to serve the world. This career challenge is life directing you toward work that feeds your soul, not just your bank account.</p>
+                </div>`,
+
+                // Variation 1: Boundaries and workplace dynamics
+                `<div class="insight-box">
+                    <strong>${name}, your workplace dynamics reveal important patterns: "${details.quote}"</strong>
+                    <p>The situation with ${details.situation} shows how your ${zodiacSign} nature navigates power, boundaries, and professional relationships. You may be giving too much or not advocating for yourself effectively.</p>
+                </div>
+
+                <p><strong>🧠 Your Professional Patterns:</strong> Your Life Path ${lifePathNumber} nature wants to ${getLifePathPurpose(lifePathNumber)}, but workplace politics around ${details.focus} trigger old patterns of people-pleasing or conflict avoidance. Your ${zodiacSign} sensitivity picks up on office dynamics others miss.</p>
+
+                <p><strong>🔄 The Boundary Challenge:</strong> When ${details.trigger} happens at work, you either overextend yourself to keep peace or withdraw to protect your energy. Neither strategy creates the professional respect your ${zodiacSign} nature deserves.</p>
+
+                <div class="solution-box">
+                    <strong>Your Professional Boundary Blueprint:</strong>
+                    <p><strong>Clear Communication:</strong> When asked to handle ${details.situation}, respond with "Let me check my bandwidth and get back to you" instead of automatic yes/no.</p>
+                    <p><strong>Value Documentation:</strong> Keep a record of your contributions and wins. Your ${zodiacSign} humility may not naturally self-advocate.</p>
+                    <p><strong>Energy Management:</strong> Schedule 5-minute breaks between meetings to reset your energy and avoid absorbing workplace stress.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Professional Power:</strong>
+                    <p>Your ${zodiacSign} gifts of ${getZodiacGifts(zodiacSign)} become leadership qualities when you honor your boundaries. Others will respect the standards you set for yourself.</p>
+                </div>`,
+
+                // Variation 2: Skills and growth focus
+                `<div class="insight-box">
+                    <strong>${name}, your career challenge is actually a growth opportunity: "${details.quote}"</strong>
+                    <p>The obstacles around ${details.situation} are developing skills your ${zodiacSign} soul needs for your next level. What feels like setback is actually setup for your professional evolution.</p>
+                </div>
+
+                <p><strong>🧠 Your Skill Development:</strong> Life Path ${lifePathNumber} souls master ${getLifePathChallenge(lifePathNumber)}, and your current challenges with ${details.focus} are precisely the curriculum you need. Your ${zodiacSign} nature learns differently than others - through experience and intuition.</p>
+
+                <p><strong>🔄 The Growth Edge:</strong> The stress around ${details.trigger} is highlighting skills you haven't fully developed yet. Instead of seeing this as failure, your ${zodiacSign} wisdom can reframe it as expansion in disguise.</p>
+
+                <div class="solution-box">
+                    <strong>Your Professional Development Plan:</strong>
+                    <p><strong>Skill Assessment:</strong> Identify 3 skills that would make ${details.situation} easier. Your ${zodiacSign} learning style prefers hands-on experience and mentorship.</p>
+                    <p><strong>Mentor Connection:</strong> Find someone who has mastered what you're struggling with regarding ${details.focus}. Your ${zodiacSign} nature learns best through relationship.</p>
+                    <p><strong>Practice Projects:</strong> Create low-stakes opportunities to practice new skills before applying them to ${details.trigger} situations.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Professional Mastery:</strong>
+                    <p>Your ${zodiacSign} approach to professional growth - through ${getZodiacGifts(zodiacSign)} - creates expertise others can't replicate. This challenge is building your unique competitive advantage.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Family analysis variations
+        function getFamilyAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Generational patterns focus
+                `<div class="insight-box">
+                    <strong>${name}, your family dynamics reveal generational patterns: "${details.quote}"</strong>
+                    <p>The situation with ${details.person} around ${details.situation} isn't just about current conflicts - it's about breaking cycles that have existed in your family line. Your ${zodiacSign} sensitivity can feel the weight of these inherited patterns.</p>
+                </div>
+
+                <p><strong>🧠 Your Generational Role:</strong> As a Life Path ${lifePathNumber}, you're meant to ${getLifePathPurpose(lifePathNumber)}, but family patterns around ${details.focus} may pull you into old roles that don't serve your growth. You're being called to be the pattern breaker.</p>
+
+                <p><strong>🔄 The Family System:</strong> When ${details.trigger} happens with ${details.person}, it activates unconscious family rules about love, worth, and belonging. Your ${zodiacSign} nature wants authentic connection, but family loyalty may keep you playing outdated roles.</p>
+
+                <div class="solution-box">
+                    <strong>Your Pattern Breaking Strategy:</strong>
+                    <p><strong>Conscious Responses:</strong> When ${details.situation} triggers old family dynamics, pause and ask "How can I respond from my adult self, not my child self?"</p>
+                    <p><strong>Boundary Setting:</strong> "I love our family AND I'm choosing to handle ${details.focus} differently than previous generations did."</p>
+                    <p><strong>Healing Rituals:</strong> Write a letter to your family lineage acknowledging their struggles while claiming your right to create new patterns.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Lineage Healing:</strong>
+                    <p>Your ${zodiacSign} courage to transform family patterns heals not just your own life, but future generations. You're the bridge between old wounds and new possibilities.</p>
+                </div>`,
+
+                // Variation 1: Individual needs vs family expectations
+                `<div class="insight-box">
+                    <strong>${name}, your family challenge highlights autonomy vs belonging: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} soul needs space to grow authentically, but family expectations around ${details.situation} may feel like pressure to stay small or play familiar roles. This creates internal conflict between loyalty and self-expression.</p>
+                </div>
+
+                <p><strong>🧠 Your Autonomy Journey:</strong> Life Path ${lifePathNumber} souls learn ${getLifePathChallenge(lifePathNumber)}, which may conflict with family beliefs about ${details.focus}. Your growth threatens the family homeostasis, even when it's healthy growth.</p>
+
+                <p><strong>🔄 The Loyalty Conflict:</strong> When you try to honor your ${zodiacSign} authentic nature around ${details.trigger}, family members may unconsciously pull you back to familiar patterns. Love and control can look similar in family systems.</p>
+
+                <div class="solution-box">
+                    <strong>Your Authentic Family Strategy:</strong>
+                    <p><strong>Clear Communication:</strong> "I love you AND I need to make choices that honor who I'm becoming. This isn't rejection - it's evolution."</p>
+                    <p><strong>Gradual Changes:</strong> Introduce new boundaries around ${details.situation} slowly, allowing family time to adjust to your growth.</p>
+                    <p><strong>Self-Validation:</strong> Your worth isn't dependent on family approval. Your ${zodiacSign} nature knows what's right for you.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Family Evolution:</strong>
+                    <p>Your ${zodiacSign} authenticity gives family members permission to be real too. Your courage to be yourself can heal the whole family system over time.</p>
+                </div>`,
+
+                // Variation 2: Communication and understanding
+                `<div class="insight-box">
+                    <strong>${name}, your family communication patterns run deep: "${details.quote}"</strong>
+                    <p>The way your family discusses ${details.situation} reflects learned styles of expressing love, conflict, and needs. Your ${zodiacSign} communication style may feel foreign to family members who learned different emotional languages.</p>
+                </div>
+
+                <p><strong>🧠 Your Communication Heritage:</strong> Your Life Path ${lifePathNumber} needs to ${getLifePathLoveLesson(lifePathNumber)} in family relationships, but inherited communication patterns around ${details.focus} may create misunderstandings. Each family member speaks love differently.</p>
+
+                <p><strong>🔄 The Translation Challenge:</strong> When you express your ${zodiacSign} needs about ${details.trigger}, family members filter it through their own emotional language. What you mean as care might be heard as criticism, or vice versa.</p>
+
+                <div class="solution-box">
+                    <strong>Your Family Communication Bridge:</strong>
+                    <p><strong>Love Language Awareness:</strong> Learn how ${details.person} expresses and receives love. They may show care through actions when you need words.</p>
+                    <p><strong>Emotional Translation:</strong> "When I say [your message about ${details.situation}], what I mean is [clearer intention]. How does that land for you?"</p>
+                    <p><strong>Patience Practice:</strong> Family members may need time to understand your ${zodiacSign} way of expressing love and boundaries.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Family Healing:</strong>
+                    <p>Your ${zodiacSign} gift for ${getZodiacGifts(zodiacSign)} can teach your family new ways of connecting. You're expanding the family's emotional vocabulary.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Money analysis variations
+        function getMoneyAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Money beliefs and self-worth
+                `<div class="insight-box">
+                    <strong>${name}, your money situation reflects deeper beliefs about worth: "${details.quote}"</strong>
+                    <p>Your relationship with money around ${details.situation} mirrors your relationship with self-value. Your ${zodiacSign} nature may have inherited conflicting messages about money, worth, and what you deserve.</p>
+                </div>
+
+                <p><strong>🧠 Your Money Psychology:</strong> Life Path ${lifePathNumber} souls learn ${getLifePathChallenge(lifePathNumber)}, including around money. The stress about ${details.focus} often stems from believing you must earn worthiness through struggle rather than claiming your inherent value.</p>
+
+                <p><strong>🔄 The Worth-Money Loop:</strong> When ${details.trigger} creates financial pressure, it activates unconscious beliefs about money that were formed in childhood. Your ${zodiacSign} nature craves security, but may be seeking it through external validation rather than inner knowing.</p>
+
+                <div class="solution-box">
+                    <strong>Your Money Mindset Transformation:</strong>
+                    <p><strong>Belief Audit:</strong> Complete this: "Money is..." and "I deserve..." Notice what comes up around ${details.situation}. These reveal your unconscious programming.</p>
+                    <p><strong>Worth Affirmations:</strong> "I am worthy of financial abundance exactly as I am. My ${zodiacSign} gifts have value in the world."</p>
+                    <p><strong>Aligned Action:</strong> Take one small step toward ${details.goal} that honors both your financial needs and your authentic nature.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Abundance Evolution:</strong>
+                    <p>Your ${zodiacSign} gifts of ${getZodiacGifts(zodiacSign)} have real economic value. When you align money with your authentic nature, abundance flows more naturally.</p>
+                </div>`,
+
+                // Variation 1: Practical financial strategy
+                `<div class="insight-box">
+                    <strong>${name}, your financial challenge needs both heart and strategy: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} approach to money may be more intuitive than systematic, but the situation with ${details.situation} requires blending your natural wisdom with practical financial tools.</p>
+                </div>
+
+                <p><strong>🧠 Your Money Management Style:</strong> Life Path ${lifePathNumber} souls often focus on ${getLifePathPurpose(lifePathNumber)} rather than money details, but mastering finances actually supports your life purpose. The challenge around ${details.focus} is asking you to develop new practical skills.</p>
+
+                <p><strong>🔄 The Strategy Gap:</strong> Your ${zodiacSign} intuition about money is valuable, but when ${details.trigger} creates pressure, you need concrete systems to support your financial decisions. Intuition plus strategy equals financial empowerment.</p>
+
+                <div class="solution-box">
+                    <strong>Your Financial Empowerment Plan:</strong>
+                    <p><strong>Money Tracking:</strong> Spend 5 minutes daily recording expenses. Your ${zodiacSign} nature needs to see patterns to make conscious choices about ${details.situation}.</p>
+                    <p><strong>Goal Setting:</strong> Break ${details.goal} into monthly, weekly, and daily actions. Your ${zodiacSign} nature needs manageable steps.</p>
+                    <p><strong>Support Systems:</strong> Find a financial accountability partner who understands your ${zodiacSign} approach to money management.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Financial Mastery:</strong>
+                    <p>Your ${zodiacSign} intuition combined with practical systems creates a powerful approach to money. You're developing financial wisdom that honors both your spirit and your security needs.</p>
+                </div>`,
+
+                // Variation 2: Money and life purpose alignment
+                `<div class="insight-box">
+                    <strong>${name}, your money struggles point toward purpose alignment: "${details.quote}"</strong>
+                    <p>The financial pressure around ${details.situation} may be life's way of pushing you toward work that truly utilizes your ${zodiacSign} gifts. Sometimes money problems are purpose problems in disguise.</p>
+                </div>
+
+                <p><strong>🧠 Your Purpose-Money Connection:</strong> Life Path ${lifePathNumber} souls thrive financially when their work aligns with ${getLifePathPurpose(lifePathNumber)}. The stress about ${details.focus} might be signaling that you're not fully expressing your authentic gifts in your income-generating activities.</p>
+
+                <p><strong>🔄 The Misalignment Cost:</strong> When you work in ways that don't honor your ${zodiacSign} nature, it drains your energy and creativity, which ultimately impacts your earning potential. The trigger around ${details.trigger} is your soul asking for better alignment.</p>
+
+                <div class="solution-box">
+                    <strong>Your Purpose-Money Integration:</strong>
+                    <p><strong>Gift Inventory:</strong> List your natural ${zodiacSign} talents. How could these solve problems people pay for around ${details.situation}?</p>
+                    <p><strong>Service Exploration:</strong> Ask "How can I use my gifts to serve others while addressing my financial needs around ${details.focus}?"</p>
+                    <p><strong>Transition Planning:</strong> Create a bridge plan to gradually shift toward work that honors your ${zodiacSign} nature while meeting practical needs.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Purposeful Prosperity:</strong>
+                    <p>Your ${zodiacSign} gifts for ${getZodiacGifts(zodiacSign)} are needed in the world. When you align your income with your purpose, money becomes a tool for expressing your authentic self.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Health analysis variations
+        function getHealthAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Mind-body connection
+                `<div class="insight-box">
+                    <strong>${name}, your body is communicating through your symptoms: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} sensitive system processes emotions through physical sensations. The health concerns around ${details.situation} may be your body's way of expressing what your mind hasn't fully processed.</p>
+                </div>
+
+                <p><strong>🧠 Your Body's Language:</strong> Life Path ${lifePathNumber} souls often experience physical symptoms when not living ${getLifePathPurpose(lifePathNumber)} authentically. Your body around ${details.focus} is asking for attention to areas where you may be disconnected from your truth.</p>
+
+                <p><strong>🔄 The Mind-Body Message:</strong> When ${details.trigger} creates stress, your ${zodiacSign} body stores that tension in specific areas. Your symptoms are information about what needs healing, not just what needs fixing.</p>
+
+                <div class="solution-box">
+                    <strong>Your Holistic Healing Approach:</strong>
+                    <p><strong>Body Awareness:</strong> When symptoms around ${details.situation} flare, ask "What is my body trying to tell me about my life right now?"</p>
+                    <p><strong>Emotional Release:</strong> Create safe spaces to feel and express emotions about ${details.focus} instead of storing them physically.</p>
+                    <p><strong>Stress Management:</strong> Your ${zodiacSign} nature needs specific stress relief - gentle movement, nature connection, and creative expression work best for your constitution.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Healing Integration:</strong>
+                    <p>Your ${zodiacSign} sensitivity, once honored, becomes your greatest health asset. Your body's messages guide you toward choices that support your whole being.</p>
+                </div>`,
+
+                // Variation 1: Energy and vitality focus
+                `<div class="insight-box">
+                    <strong>${name}, your vitality is connected to your authentic expression: "${details.quote}"</strong>
+                    <p>Your ${zodiacSign} energy system thrives when you're living authentically. The fatigue or health challenges around ${details.situation} may indicate areas where you're not honoring your natural rhythms and needs.</p>
+                </div>
+
+                <p><strong>🧠 Your Energy Blueprint:</strong> Life Path ${lifePathNumber} souls have specific energy patterns designed for ${getLifePathPurpose(lifePathNumber)}. When you fight against your natural rhythm around ${details.focus}, it depletes your vital force and impacts your health.</p>
+
+                <p><strong>🔄 The Energy Drain:</strong> Your ${zodiacSign} constitution has particular needs for rest, stimulation, and environment. When ${details.trigger} forces you outside these parameters, your energy and health suffer as a protective response.</p>
+
+                <div class="solution-box">
+                    <strong>Your Vitality Restoration Plan:</strong>
+                    <p><strong>Energy Audit:</strong> Track your energy levels throughout the day in relation to activities around ${details.situation}. What drains vs. energizes you?</p>
+                    <p><strong>Natural Rhythms:</strong> Honor your ${zodiacSign} needs for regular rest, meaningful work, and emotional connection even when external pressures around ${details.focus} demand otherwise.</p>
+                    <p><strong>Boundary Medicine:</strong> Protecting your energy from ${details.trigger} is not selfish - it's essential for your health and service to others.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Vibrant Health:</strong>
+                    <p>Your ${zodiacSign} vitality, when properly supported, enables you to express ${getZodiacGifts(zodiacSign)} at full capacity. Health is your foundation for authentic living.</p>
+                </div>`,
+
+                // Variation 2: Lifestyle and habits
+                `<div class="insight-box">
+                    <strong>${name}, your health reflects your life choices and patterns: "${details.quote}"</strong>
+                    <p>The health challenges around ${details.situation} are inviting you to examine lifestyle patterns that may not serve your ${zodiacSign} constitution. Small consistent changes often create the biggest transformations.</p>
+                </div>
+
+                <p><strong>🧠 Your Wellness Patterns:</strong> Life Path ${lifePathNumber} souls sometimes neglect self-care while focusing on ${getLifePathPurpose(lifePathNumber)}. The issue with ${details.focus} is asking you to integrate wellness as a non-negotiable foundation for your life's work.</p>
+
+                <p><strong>🔄 The Habit Loop:</strong> Your ${zodiacSign} nature may default to certain patterns around ${details.trigger} that feel comforting in the moment but undermine your long-term health. Awareness is the first step toward conscious choice.</p>
+
+                <div class="solution-box">
+                    <strong>Your Sustainable Wellness Plan:</strong>
+                    <p><strong>Gentle Changes:</strong> Choose one small health improvement around ${details.situation} that feels doable for your ${zodiacSign} nature. Consistency matters more than perfection.</p>
+                    <p><strong>Lifestyle Alignment:</strong> Ask "What would someone who deeply loves their body do about ${details.focus}?" then take that loving action.</p>
+                    <p><strong>Support Systems:</strong> Your ${zodiacSign} nature thrives with community support and gentle accountability. Don't try to change health patterns in isolation.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Health Evolution:</strong>
+                    <p>Your ${zodiacSign} approach to wellness - through ${getZodiacGifts(zodiacSign)} - creates sustainable health that supports your life purpose. You're modeling self-care for others.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // General analysis variations
+        function getGeneralAnalysis(variation, name, details, zodiacSign, lifePathNumber) {
+            const variations = [
+                // Variation 0: Life purpose and meaning
+                `<div class="insight-box">
+                    <strong>${name}, your situation points toward deeper purpose: "${details.quote}"</strong>
+                    <p>What you're experiencing with ${details.situation} isn't random - it's your soul calling you toward greater alignment with your ${zodiacSign} authentic nature and Life Path ${lifePathNumber} purpose.</p>
+                </div>
+
+                <p><strong>🧠 Your Soul's Curriculum:</strong> Life Path ${lifePathNumber} souls are here to master ${getLifePathChallenge(lifePathNumber)}, and the challenge around ${details.focus} is precisely the lesson you need right now. Your ${zodiacSign} nature is being refined through this experience.</p>
+
+                <p><strong>🔄 The Growth Edge:</strong> When ${details.trigger} creates discomfort, it's because you're being stretched beyond your current comfort zone. Your ${zodiacSign} soul knows this expansion is necessary for your evolution.</p>
+
+                <div class="solution-box">
+                    <strong>Your Purpose Alignment Strategy:</strong>
+                    <p><strong>Meaning Making:</strong> Ask "How is this situation with ${details.situation} developing the exact qualities I need for my life's work?"</p>
+                    <p><strong>Value Clarification:</strong> Use this challenge to identify what truly matters to your ${zodiacSign} soul. Crisis often clarifies values.</p>
+                    <p><strong>Service Vision:</strong> How could mastering ${details.focus} enable you to help others facing similar challenges?</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Purpose Awakening:</strong>
+                    <p>Your ${zodiacSign} gifts of ${getZodiacGifts(zodiacSign)} are being forged through this fire. What feels like breakdown is actually breakthrough in disguise.</p>
+                </div>`,
+
+                // Variation 1: Personal transformation and growth
+                `<div class="insight-box">
+                    <strong>${name}, you're in a powerful transformation cycle: "${details.quote}"</strong>
+                    <p>The challenges around ${details.situation} signal that you're outgrowing an old version of yourself. Your ${zodiacSign} soul is ready for the next level of authenticity and personal power.</p>
+                </div>
+
+                <p><strong>🧠 Your Metamorphosis:</strong> Life Path ${lifePathNumber} souls evolve through ${getLifePathChallenge(lifePathNumber)}, and what you're experiencing with ${details.focus} is your chrysalis moment. Transformation requires breaking down old structures to build new ones.</p>
+
+                <p><strong>🔄 The Identity Shift:</strong> When ${details.trigger} brings up discomfort, it's often because you're being called to embody more of your ${zodiacSign} authentic power. Old coping strategies no longer fit who you're becoming.</p>
+
+                <div class="solution-box">
+                    <strong>Your Transformation Support:</strong>
+                    <p><strong>Identity Evolution:</strong> Write about who you're becoming through this experience with ${details.situation}. What new qualities are emerging?</p>
+                    <p><strong>Release Rituals:</strong> Consciously let go of old patterns around ${details.focus} that no longer serve your growth.</p>
+                    <p><strong>New Story:</strong> Reframe ${details.trigger} as a sacred initiation into greater ${zodiacSign} authenticity and power.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Transformation Gift:</strong>
+                    <p>Your ${zodiacSign} courage to transform yourself gives others permission to evolve too. You're becoming a living example of what's possible through conscious growth.</p>
+                </div>`,
+
+                // Variation 2: Inner wisdom and intuition
+                `<div class="insight-box">
+                    <strong>${name}, your inner wisdom is speaking through this experience: "${details.quote}"</strong>
+                    <p>The situation with ${details.situation} is activating your ${zodiacSign} intuitive knowing. Beyond the surface challenge lies a deeper invitation to trust your inner guidance more fully.</p>
+                </div>
+
+                <p><strong>🧠 Your Intuitive Navigation:</strong> Life Path ${lifePathNumber} souls access wisdom through ${getLifePathPurpose(lifePathNumber)}, but external pressures around ${details.focus} may have disconnected you from your inner knowing. This challenge is reconnecting you to your ${zodiacSign} intuitive gifts.</p>
+
+                <p><strong>🔄 The Trust Journey:</strong> When ${details.trigger} creates uncertainty, your mind seeks external validation, but your ${zodiacSign} soul knows the answers lie within. Learning to trust your inner guidance is the real curriculum here.</p>
+
+                <div class="solution-box">
+                    <strong>Your Inner Wisdom Activation:</strong>
+                    <p><strong>Quiet Time:</strong> Create 15 minutes daily for stillness around decisions related to ${details.situation}. Your ${zodiacSign} nature receives guidance through meditation and reflection.</p>
+                    <p><strong>Body Wisdom:</strong> Notice how different choices about ${details.focus} feel in your body. Your ${zodiacSign} intuition speaks through physical sensations.</p>
+                    <p><strong>Trust Building:</strong> Start with small decisions about ${details.trigger}, noticing when you follow intuition vs. fear. Build confidence gradually.</p>
+                </div>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>🌱 Your Wisdom Evolution:</strong>
+                    <p>Your ${zodiacSign} intuitive gifts of ${getZodiacGifts(zodiacSign)} are your greatest navigational tools. Trusting your inner wisdom transforms you into a beacon for others seeking their truth.</p>
+                </div>`
+            ];
+            
+            return variations[variation];
+        }
+
+        // Spiritual analysis with variations
+        function getSpiritualAnalysis(belief, variation, name, details, zodiacSign, category) {
+            const spiritualVariations = {
+                'christianity': [
+                    // Variation 0: God's love and grace
+                    `<p><strong>${name}, God's heart for you shines through your struggle with ${details.situation}.</strong> Your ${zodiacSign} soul reflects God's own emotional depth and compassion. He sees every tear, every worry, every moment of pain around ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>God's Personal Word for You:</strong>
+                        "And we know that in all things God works for the good of those who love him" (Romans 8:28). Even your challenge with ${details.trigger} is being woven into His beautiful plan for your life.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Faith-Centered Practice:</strong>
+                        <p><strong>Morning Surrender:</strong> "Father, I place ${details.situation} in Your hands today. Give me Your peace and perspective."</p>
+                        <p><strong>Scripture Meditation:</strong> Memorize Jeremiah 29:11 - "For I know the plans I have for you... plans to prosper you and not to harm you."</p>
+                        <p><strong>Community Prayer:</strong> Share your burden about ${details.focus} with trusted believers who can intercede with you.</p>
+                    </div>`,
+
+                    // Variation 1: Walking by faith
+                    `<p><strong>${name}, God is teaching you to walk by faith through ${details.situation}.</strong> Your ${zodiacSign} nature wants to see the whole path, but God invites you to trust Him one step at a time, especially around ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Jesus' Example for You:</strong>
+                        "Trust in the Lord with all your heart and lean not on your own understanding" (Proverbs 3:5). Your anxiety about ${details.trigger} is an invitation to depend more fully on His wisdom.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Faith Walk Practice:</strong>
+                        <p><strong>Daily Trust:</strong> Each morning, choose one specific worry about ${details.situation} to surrender to God's care.</p>
+                        <p><strong>Faith Declarations:</strong> "God's got this. He's working even when I can't see it." Speak this over ${details.focus}.</p>
+                        <p><strong>Step by Step:</strong> Ask God for just the next step regarding ${details.trigger}, not the whole journey.</p>
+                    </div>`,
+
+                    // Variation 2: God's purposes and growth
+                    `<p><strong>${name}, God is using ${details.situation} to develop Christ-like character in you.</strong> Your ${zodiacSign} sensitivity is actually a spiritual gift that He wants to refine and strengthen through this season.</p>
+                    
+                    <div class="insight-box">
+                        <strong>His Purpose in Your Trial:</strong>
+                        "Consider it pure joy... because you know that the testing of your faith produces perseverance" (James 1:2-3). Your struggle with ${details.trigger} is developing spiritual maturity.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Character Growth Practice:</strong>
+                        <p><strong>Identity in Christ:</strong> Remind yourself daily: "I am chosen, beloved, and equipped for this challenge with ${details.situation}."</p>
+                        <p><strong>Gratitude Practice:</strong> Find one thing to thank God for regarding ${details.focus}, even in the difficulty.</p>
+                        <p><strong>Service Mindset:</strong> Ask "How can my experience with ${details.trigger} help me serve others in the future?"</p>
+                    </div>`
+                ],
+
+                'buddhism': [
+                    // Variation 0: Suffering and attachment
+                    `<p><strong>${name}, your suffering around ${details.situation} points to attachment.</strong> The Buddha taught that our pain comes not from what happens, but from our resistance to what is. Your ${zodiacSign} nature grips tightly to preferences about ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Buddha's Teaching for You:</strong>
+                        "Pain is inevitable, suffering is optional." Your distress about ${details.trigger} comes from wanting things to be different than they are.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Liberation Practice:</strong>
+                        <p><strong>Mindful Observation:</strong> Notice when you're fighting ${details.situation} mentally. Simply observe without judgment.</p>
+                        <p><strong>Impermanence Meditation:</strong> Remember "This too shall pass" regarding ${details.focus}. Everything changes.</p>
+                        <p><strong>Loving-Kindness:</strong> Send compassion to yourself and all beings struggling with similar challenges to ${details.trigger}.</p>
+                    </div>`,
+
+                    // Variation 1: Mindfulness and present moment
+                    `<p><strong>${name}, your challenge with ${details.situation} is calling you to deeper presence.</strong> Your ${zodiacSign} mind creates stories about ${details.focus}, but reality exists only in this moment.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Mindfulness Wisdom:</strong>
+                        "The present moment is the only time over which we have dominion." Your worry about ${details.trigger} takes you away from the power of now.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Presence Practice:</strong>
+                        <p><strong>Breath Anchor:</strong> When anxiety about ${details.situation} arises, return to feeling your breath. This moment is safe.</p>
+                        <p><strong>Mindful Activities:</strong> Bring full attention to simple activities while processing ${details.focus}.</p>
+                        <p><strong>Reality Check:</strong> Ask "What is actually happening right now?" vs. the stories about ${details.trigger}.</p>
+                    </div>`,
+
+                    // Variation 2: Compassion and interconnection
+                    `<p><strong>${name}, your experience with ${details.situation} connects you to all beings.</strong> Your ${zodiacSign} heart feels deeply because you understand the universal nature of struggle around ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Compassion Teaching:</strong>
+                        "If you want others to be happy, practice compassion. If you want to be happy, practice compassion." Your pain about ${details.trigger} opens your heart to universal suffering.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Compassion Practice:</strong>
+                        <p><strong>Self-Compassion:</strong> Treat yourself with the same kindness you'd show a dear friend facing ${details.situation}.</p>
+                        <p><strong>Universal Connection:</strong> Remember that millions of people are struggling with challenges similar to ${details.focus}.</p>
+                        <p><strong>Bodhisattva Intention:</strong> Dedicate your healing from ${details.trigger} to the benefit of all beings.</p>
+                    </div>`
+                ],
+
+                'spiritual': [
+                    // Variation 0: Soul purpose and lessons
+                    `<p><strong>${name}, your soul chose this experience with ${details.situation} for specific growth.</strong> Your ${zodiacSign} spirit knew before incarnating that you would face this challenge around ${details.focus} to develop crucial soul qualities.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Soul Wisdom:</strong>
+                        Everything happens for your soul's evolution. Your struggle with ${details.trigger} is developing compassion, strength, and wisdom that your soul needs for its journey.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Soul Alignment Practice:</strong>
+                        <p><strong>Higher Perspective:</strong> Ask your higher self "What is this situation with ${details.situation} teaching me?"</p>
+                        <p><strong>Soul Journaling:</strong> Write from your soul's perspective about the gifts hidden in ${details.focus}.</p>
+                        <p><strong>Purpose Connection:</strong> How does healing ${details.trigger} serve your soul's mission?</p>
+                    </div>`,
+
+                    // Variation 1: Energy and vibration
+                    `<p><strong>${name}, your energy around ${details.situation} is calling for alignment.</strong> Your ${zodiacSign} sensitive energy field picks up on misalignments between your soul truth and external circumstances around ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Energetic Truth:</strong>
+                        You are a powerful energetic being having a human experience. The discomfort around ${details.trigger} signals areas where your energy needs realignment with your highest truth.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Energy Mastery Practice:</strong>
+                        <p><strong>Vibration Raising:</strong> Engage in activities that naturally elevate your frequency when dealing with ${details.situation}.</p>
+                        <p><strong>Energy Protection:</strong> Visualize white light surrounding you during challenging moments with ${details.focus}.</p>
+                        <p><strong>Manifestation Work:</strong> Focus on the feeling of having resolved ${details.trigger} rather than the problem itself.</p>
+                    </div>`,
+
+                    // Variation 2: Universal love and connection
+                    `<p><strong>${name}, the Universe is loving you through this experience with ${details.situation}.</strong> Your ${zodiacSign} heart recognizes that even challenges are expressions of cosmic love, guiding you toward your highest good around ${details.focus}.</p>
+                    
+                    <div class="insight-box">
+                        <strong>Universal Love:</strong>
+                        You are infinitely loved and supported by the Universe. Your challenge with ${details.trigger} is not punishment but guidance toward greater alignment with love.
+                    </div>
+                    
+                    <div class="solution-box">
+                        <strong>Your Love Alignment Practice:</strong>
+                        <p><strong>Love Meditation:</strong> Send love to every aspect of ${details.situation}, including the challenges.</p>
+                        <p><strong>Trust Practice:</strong> Affirm daily "The Universe has my back" regarding ${details.focus}.</p>
+                        <p><strong>Gratitude Flow:</strong> Find love and gratitude even in the difficulty of ${details.trigger}.</p>
+                    </div>`
+                ]
+            };
+
+            // Default to spiritual if belief not found
+            const variations = spiritualVariations[belief] || spiritualVariations['spiritual'];
+            return variations[variation % variations.length];
+        }
+
+        // Helper functions for life path and zodiac interpretations
+        function getLifePathPurpose(number) {
+            const purposes = {
+                1: "lead others toward new possibilities and break new ground",
+                2: "create harmony and help others cooperate and connect", 
+                3: "inspire and uplift others through creative self-expression",
+                4: "build stable foundations and practical solutions for others",
+                5: "experience freedom and teach others about adaptability",
+                6: "serve and nurture others while creating loving environments",
+                7: "seek truth and share spiritual wisdom with the world",
+                8: "master material success and teach others about abundance",
+                9: "serve humanity and share universal wisdom and compassion",
+                11: "inspire others through spiritual leadership and intuitive gifts",
+                22: "build large-scale projects that benefit humanity",
+                33: "heal and teach through unconditional love and service"
+            };
+            return purposes[number] || purposes[1];
+        }
+
+        function getLifePathChallenge(number) {
+            const challenges = {
+                1: "learning to lead while collaborating with others",
+                2: "developing confidence while maintaining cooperation",
+                3: "focusing creative energy for meaningful expression",
+                4: "balancing hard work with flexibility and joy",
+                5: "committing to growth while maintaining freedom",
+                6: "serving others while caring for yourself first",
+                7: "sharing wisdom while staying connected to others",
+                8: "achieving success while maintaining integrity and heart",
+                9: "serving humanity while honoring your own needs"
+            };
+            return challenges[number] || challenges[1];
+        }
+
+        function getLifePathLoveLesson(number) {
+            const lessons = {
+                1: "to love your independent nature while allowing vulnerability",
+                2: "to love yourself as much as you love others",
+                3: "to express your heart authentically in relationships",
+                4: "to let love be spontaneous, not just practical",
+                5: "to commit to love while maintaining your freedom",
+                6: "to receive love as generously as you give it",
+                7: "to trust your heart as much as your mind",
+                8: "to value emotional connection over material success",
+                9: "to love individuals deeply, not just humanity in general"
+            };
+            return lessons[number] || lessons[1];
+        }
+
+        function getZodiacGifts(sign) {
+            const gifts = {
+                'Aries': 'courage, leadership, and pioneering spirit',
+                'Taurus': 'patience, reliability, and creating beauty',
+                'Gemini': 'communication, adaptability, and intellectual curiosity',
+                'Cancer': 'intuition, empathy, and nurturing wisdom',
+                'Leo': 'creativity, generosity, and inspiring presence',
+                'Virgo': 'analysis, service, and practical problem-solving',
+                'Libra': 'diplomacy, aesthetic sense, and relationship harmony',
+                'Scorpio': 'depth, transformation, and psychological insight',
+                'Sagittarius': 'wisdom, optimism, and philosophical understanding',
+                'Capricorn': 'discipline, ambition, and long-term vision',
+                'Aquarius': 'innovation, humanitarian instincts, and original thinking',
+                'Pisces': 'compassion, imagination, and spiritual sensitivity'
+            };
+            return gifts[sign] || 'unique talents and perspectives';
+        }
+
+        function getZodiacLoveStyle(sign) {
+            const styles = {
+                'Aries': 'passionate, direct, and adventure-seeking love',
+                'Taurus': 'steady, sensual, and devotedly loyal love',
+                'Gemini': 'intellectually stimulating and communicative love',
+                'Cancer': 'emotionally deep, nurturing, and protective love',
+                'Leo': 'dramatic, generous, and heart-centered love',
+                'Virgo': 'practical, supportive, and gradually deepening love',
+                'Libra': 'harmonious, romantic, and partnership-focused love',
+                'Scorpio': 'intensely transformative and soul-deep love',
+                'Sagittarius': 'adventurous, philosophical, and freedom-respecting love',
+                'Capricorn': 'committed, stable, and goal-oriented love',
+                'Aquarius': 'unique, friendship-based, and mentally connecting love',
+                'Pisces': 'spiritual, intuitive, and unconditionally accepting love'
+            };
+            return styles[sign] || 'authentic and heartfelt love';
+        }
+
+        // Error display function
+        function showError(message) {
+            const analysisSection = document.getElementById('analysisSection');
+            analysisSection.innerHTML = `
+                <div class="error-box">
+                    <strong>Analysis Notice:</strong>
+                    <p>${message}</p>
+                </div>
+            `;
+            analysisSection.style.display = 'block';
+            analysisSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Zodiac calculation function
+        function getZodiacSign(birthdate) {
+            const date = new Date(birthdate);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return 'Aries';
+            if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return 'Taurus';
+            if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return 'Gemini';
+            if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return 'Cancer';
+            if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return 'Leo';
+            if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return 'Virgo';
+            if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return 'Libra';
+            if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return 'Scorpio';
+            if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return 'Sagittarius';
+            if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return 'Capricorn';
+            if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 'Aquarius';
+            return 'Pisces';
+        }
+
+        // Life path calculation function
+        function calculateLifePath(birthdate) {
+            const dateStr = birthdate.toISOString().slice(0, 10).replace(/-/g, '');
+            let sum = 0;
+            for (let digit of dateStr) {
+                sum += parseInt(digit);
+            }
+            while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+                sum = Math.floor(sum / 10) + (sum % 10);
+            }
+            return sum;
+        }
+    </script>
+</body>
+</html>
